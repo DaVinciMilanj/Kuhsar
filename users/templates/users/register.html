@@ -1,0 +1,8 @@
+{% extends '_base.html' %}
+{% block body %}
+    <form action="" method="post">
+    {{% csrf_token %}
+    {{ form.as_div }}
+        <button type="submit">ساخت یوزر</button>
+    </form>
+{% endblock %}

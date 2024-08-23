@@ -1,0 +1,10 @@
+{% extends '_base.html' %}
+{% block body %}
+    <form action="" method="post">
+    {% csrf_token %}
+        <input type="text" name="user" placeholder="نام کاربری یا رمز وررود"> <br>
+        <input type="text" name="password" placeholder="پسوورد خود را وارد کنید"><br>
+
+        <button type="submit">ورود</button>
+    </form>
+{% endblock %}
