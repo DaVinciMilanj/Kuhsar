@@ -1,8 +1,76 @@
 {% extends '_base.html' %}
 {% block body %}
-    <form action="" method="post">
-    {{% csrf_token %}
-    {{ form.as_div }}
-        <button type="submit">ساخت یوزر</button>
-    </form>
+<div id="layoutAuthentication">
+    <div id="layoutAuthentication_content">
+        <main>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-7">
+                        <div class="card bg-dark shadow-lg border-0 rounded-lg mt-5">
+                            <div class="card-header"><h3 class="text-center text-light font-weight-light my-4">ساخت
+                                کاربر</h3></div>
+                            <div class="card-body">
+                                <form method="post">
+                                    {% csrf_token %}
+                                    <div class="row mb-3">
+                                        <div class="form-floating mb-3">
+                                            <input name="username" class="form-control" id="inputEmail" type="text"
+                                                   placeholder=""/>
+                                            <label for="inputEmail">نام کاربری</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-floating mb-3 mb-md-0">
+                                                <input name="f_name" class="form-control" id="inputFirstName" type="text"
+                                                       placeholder=""/>
+                                                <label for="inputFirstName">نام</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-floating">
+                                                <input name="l_name" class="form-control" id="inputLastName" type="text"
+                                                       placeholder=" "/>
+                                                <label for="inputLastName">نام خانوادگی</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <input name="phone" class="form-control" id="inputEmail" type="tel"
+                                               placeholder=""/>
+                                        <label for="inputEmail">تلفن</label>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <div class="form-floating mb-3 mb-md-0">
+                                                <input name="room_id" class="form-control" id="inputPassword" type="text"
+                                                       placeholder=""/>
+                                                <label for="inputPassword">شناسه ملک</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-floating mb-3 mb-md-0">
+                                                <input name="room_size" class="form-control" id="inputPasswordConfirm" type="text"
+                                                       placeholder=""/>
+                                                <label for="inputPasswordConfirm">متراژ ملک</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <input name="password" class="form-control" id="inputEmail" type="tel"
+                                               placeholder=""/>
+                                        <label for="inputEmail">رمز عبور</label>
+                                    </div>
+                                    <div class="mt-4 mb-0">
+                                        <div class="d-grid"><button type="submit" class="btn btn-primary btn-block">
+                                            ساخت کاربر</button></div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
 {% endblock %}
+
