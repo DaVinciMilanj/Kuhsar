@@ -58,11 +58,14 @@ class HomePageView(generic.FormView):
 
 
 def admin_page(request):
-    return render(request, 'users/admin.html')
+    users = CustomeUser.objects.all()
+    return render(request, 'users/admin.html', {'users': users})
+
 
 
 def user_page(request):
     return render(request, 'users/users.html')
+
 
 
 # def register_user(request):

@@ -10906,10 +10906,10 @@ body {
     transition: margin 0.15s ease-in-out;
   }
   .sb-sidenav-toggled #layoutSidenav #layoutSidenav_nav {
-    transform: translateX(-225px);
+    transform: translateX(225px);
   }
   .sb-sidenav-toggled #layoutSidenav #layoutSidenav_content {
-    margin-left: -225px;
+    margin-left: 225px;
   }
   .sb-sidenav-toggled #layoutSidenav #layoutSidenav_content:before {
     display: none;
@@ -11168,7 +11168,7 @@ body {
 
 .datatable-table > thead > tr > th {
   vertical-align: bottom;
-  text-align: left;
+  text-align: right;
   border-bottom: none;
 }
 
@@ -11185,6 +11185,8 @@ body {
 .datatable-table th a {
   text-decoration: none;
   color: inherit;
+
+
 }
 
 .datatable-sorter {

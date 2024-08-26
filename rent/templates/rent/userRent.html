@@ -1,15 +1,52 @@
 {% extends '_base.html' %}
 {% block body %}
-{% for b in bill %}
-
-    <div class="card" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title">{{ b.start_date }}</h5>
-      <h6 class="">{{ b.best_date }}</h6>
-    <h6 class="card-subtitle mb-2 text-body-secondary">price : {{ b.total_price }}</h6>
-    <a href="#" class="card-link">Card link</a>
-    <a href="#" class="card-link">Another link</a>
-  </div>
-</div>
-{% endfor %}
+    <div class="card my-4">
+        <div class="card-header">
+            <i class="fas fa-table me-1"></i>
+            جدول کاربران
+        </div>
+        <div class="card-body">
+            <table id="datatablesSimple">
+                <thead>
+                <tr>
+                    <th>قیمت ثابت</th>
+                    <th>تاریخ شروع</th>
+                    <th>تاریخ پایان</th>
+                    <th>بهترین دوره</th>
+                    <th>دوره طلایی</th>
+                    <th>تخفیف</th>
+                    <th>قیمت کل</th>
+                    <th>وضعیت</th>
+                </tr>
+                </thead>
+                <tfoot>
+                <tr>
+                    <th>قیمت ثابت</th>
+                    <th>تاریخ شروع</th>
+                    <th>تاریخ پایان</th>
+                    <th>بهترین دوره</th>
+                    <th>دوره طلایی</th>
+                    <th>تخفیف</th>
+                    <th>قیمت کل</th>
+                    <th>وضعیت</th>
+                </tr>
+                </tfoot>
+                <tbody>
+                {% for b in bill %}
+                    <tr>
+                        <td>{{ b.price }}</td>
+                        <td>{{ b.start_date }}</td>
+                        <td>{{ b.end_date }}</td>
+                        <td>{{ b.best_date }}</td>
+                        <td>{{ b.golden_date }}</td>
+                        <td>{{ b.discount }}</td>
+                        <td>{{ b.total_price }}</td>
+                        <td>{{ b.paid }}</td>
+                        <td></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
 {% endblock %}

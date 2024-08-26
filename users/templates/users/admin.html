@@ -1,2 +1,51 @@
-{% extends '_base.html' %}
-<h1>سلام ادمین</h1>
+{% extends '_base-admin.html' %}
+{% block body %}
+<div class="card my-4">
+    <div class="card-header">
+        <i class="fas fa-table me-1"></i>
+       جدول کاربران
+    </div>
+    <div class="card-body">
+        <table id="datatablesSimple">
+            <thead>
+            <tr>
+                <th>نام کاربری</th>
+                <th>نام</th>
+                <th>نام خانوادگی</th>
+                <th>تلفن</th>
+                <th>شناسه ملک</th>
+                <th>متراژ ملک</th>
+                <th>وضعیت</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tfoot>
+            <tr>
+                <th>نام کاربری</th>
+                <th>نام</th>
+                <th>نام خانوادگی</th>
+                <th>تلفن</th>
+                <th>شناسه ملک</th>
+                <th>متراژ ملک</th>
+                <th>وضعیت</th>
+                <th></th>
+            </tr>
+            </tfoot>
+            <tbody>
+            {% for user in users %}
+            <tr>
+                <td>{{user.username}}</td>
+                <td>{{user.f_name}}</td>
+                <td>{{user.l_name}}</td>
+                <td>{{user.phone}}</td>
+                <td>{{user.room_id}}</td>
+                <td>{{user.room_size}}</td>
+                <td>{{user.status}}</td>
+                <td></td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
