@@ -2,6 +2,8 @@ from django.shortcuts import render
 from .models import *
 from django.utils import timezone
 from django.views import generic
+from django.contrib.auth.mixins import LoginRequiredMixin
+from .forms import RentRoomForm
 
 
 # Create your views here.
@@ -18,3 +20,8 @@ class RentUsersView(generic.ListView):
 
     def get_queryset(self):
         return RentRoom.objects.filter(user_id=self.request.user.id)
+
+class RentRoomAdmin(generic.CreateView , LoginRequiredMixin):
+    form_class = RentRoomForm
+    template_name='rent/admin-rent.html'
+    context_object_name = 'form'

@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends "_base-admin.html" %}
+{% block body %}
+
+{{form.as_p}}
+<button type="submit">Create</button>
+
+{% endblock  %}
+
