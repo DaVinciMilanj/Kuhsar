@@ -3,7 +3,7 @@
 <div class="card my-4">
     <div class="card-header">
         <i class="fas fa-table me-1"></i>
-       جدول کاربران
+        جدول کاربران
     </div>
     <div class="card-body">
         <table id="datatablesSimple">
@@ -34,14 +34,26 @@
             <tbody>
             {% for user in users %}
             <tr>
-                <td>{{user.username}}</td>
-                <td>{{user.f_name}}</td>
-                <td>{{user.l_name}}</td>
-                <td>{{user.phone}}</td>
-                <td>{{user.room_id}}</td>
-                <td>{{user.room_size}}</td>
-                <td>{{user.status}}</td>
-                <td></td>
+                <td>{{ user.username }}</td>
+                <td>{{ user.f_name }}</td>
+                <td>{{ user.l_name }}</td>
+                <td>{{ user.phone }}</td>
+                <td>{{ user.room_id }}</td>
+                <td>{{ user.room_size }}</td>
+                {% if user.status == "None" %}
+                <td>
+                    <span class="badge badge-primary">سوپر ادمین</span>
+                </td>
+                {% elif user.status == "admin" %}
+                <td>
+                    <span class="badge badge-primary">ادمین</span>
+                </td>
+                {% elif user.status == "owner" %}
+                <td>
+                    <span class="badge badge-success">مالک</span>
+                </td>
+                {% endif %}
+
             </tr>
             {% endfor %}
             </tbody>

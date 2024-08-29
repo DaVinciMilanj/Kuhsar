@@ -3,7 +3,7 @@
     <div class="card my-4">
         <div class="card-header">
             <i class="fas fa-table me-1"></i>
-            جدول کاربران
+            جدول قبوض
         </div>
         <div class="card-body">
             <table id="datatablesSimple">
@@ -41,8 +41,16 @@
                         <td>{{ b.golden_date }}</td>
                         <td>{{ b.discount }}</td>
                         <td>{{ b.total_price }}</td>
-                        <td>{{ b.paid }}</td>
-                        <td></td>
+                        {% if b.paid == False %}
+                            <td>
+                                <span class="badge badge-danger">پرداخت نشده</span>
+                            </td>
+                        {% elif b.paid == True %}
+                            <td>
+                                <span class="badge badge-success">پرداخت شده</span>
+                            </td>
+                        {% endif %}
+
                     </tr>
                 {% endfor %}
                 </tbody>

@@ -1,7 +1,8 @@
 {% block body %}
+{% if user.is_authenticated %}
 <nav class="sb-topnav navbar di navbar-expand navbar-dark bg-dark">
     <div class="container-fluid">
-        {% if user.is_authenticated and user.is_staff %}
+        {% if user.is_staff %}
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
                 class="fas fa-bars"></i></button>
         {% endif %}
@@ -11,13 +12,22 @@
                 <li class="nav-item ">
                     <a class="nav-link active">مجتمع کوهسر</a>
                 </li>
-                {% if user.is_authenticated and user.is_staff == False %}
+                {% if user.is_staff == False %}
                 <li class="nav-item">
                     <a class="nav-link " aria-current="page" href="{% url 'users:user_page' %}">صفحه اصلی</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link " href="{% url 'rent:rent_users' %}">اجاره ها</a>
                 </li>
+
+                <li class="nav-item">
+                    <form method="post" action="{% url 'users:logout_user' %}">
+                        {% csrf_token %}
+                        <button class=" border-0  nav-link bg-dark" type="submit">خروج</button>
+                    </form>
+                </li>
+
+
                 {% endif %}
             </ul>
 
@@ -26,8 +36,6 @@
 
 
 </nav>
-{% if user.is_authenticated and user.is_staff == False %}
-
 {% endif %}
 <script>
     window.addEventListener('DOMContentLoaded', event => {
