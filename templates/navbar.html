@@ -13,7 +13,7 @@
                     <a class="nav-link active">مجتمع کوهسر</a>
                 </li>
                 {% if user.is_staff == False %}
-                <li class="nav-item">
+                <li class="nav-item ">
                     <a class="nav-link " aria-current="page" href="{% url 'users:user_page' %}">صفحه اصلی</a>
                 </li>
                 <li class="nav-item">
@@ -23,7 +23,7 @@
                 <li class="nav-item">
                     <form method="post" action="{% url 'users:logout_user' %}">
                         {% csrf_token %}
-                        <button class=" border-0  nav-link bg-dark" type="submit">خروج</button>
+                        <button class=" border-0 nav-link bg-dark" type="submit">خروج</button>
                     </form>
                 </li>
 
