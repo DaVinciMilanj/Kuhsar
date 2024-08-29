@@ -57,10 +57,16 @@ class HomePageView(generic.FormView):
             return self.form_invalid(form)
 
 
-def admin_page(request):
-    users = CustomeUser.objects.all()
-    return render(request, 'users/admin.html', {'users': users})
+# def admin_page(request):
+#     users = CustomeUser.objects.filter(status='owner')
+#     return render(request, 'users/admin.html', {'users': users})
 
+class AdminPage(generic.ListView):
+    model = CustomeUser
+    template_name = 'users/admin.html'
+    context_object_name = 'users'
+    def get_queryset(self):
+        return CustomeUser.objects.filter(status='owner')
 
 
 def user_page(request):
