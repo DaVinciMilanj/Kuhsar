@@ -11,7 +11,7 @@
             <th>شناسه ملک</th>
             <th>متراژ ملک</th>
             <th>وضعیت</th>
-            <th></th>
+            <th>جزیات</th>
         </tr>
         </thead>
 
@@ -19,8 +19,8 @@
         {% for user in users %}
         <tr>
             <td>{{ user.username }}</td>
-            <td>{{ user.f_name }}</td>
-            <td>{{ user.l_name }}</td>
+            <td>{{ user.first_name }}</td>
+            <td>{{ user.last_name }}</td>
             <td>{{ user.phone }}</td>
             <td>{{ user.room_id }}</td>
             <td>{{ user.room_size }}</td>
@@ -39,7 +39,7 @@
                 <span class="badge text-bg-success">مالک</span>
             </td>
             {% endif %}
-            <td></td>
+            <td><a href=" {% url 'users:admin_details' user.id %} ">مشاهده </a></td>
         </tr>
         {% endfor %}
         </tbody>

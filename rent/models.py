@@ -4,7 +4,7 @@ from django.dispatch import receiver
 from django.utils import timezone
 from django_jalali.db import models as jmodels
 from users.models import CustomeUser
-from django.db.models.signals import post_save
+from django.db.models.signals import post_save, post_delete
 
 
 # Create your models here.
@@ -16,6 +16,7 @@ class RentRoom(models.Model):
     start_date = jmodels.jDateField()
     end_date = jmodels.jDateField()
     best_date = jmodels.jDateField()
+    detail = models.TextField(blank=True, null=True)
     golden_date = jmodels.jDateField(blank=True)
     discount = models.PositiveSmallIntegerField(blank=True, null=True)
     is_active = models.BooleanField(default=True)
@@ -50,16 +51,24 @@ class RentHistory(models.Model):
     user = models.ForeignKey(CustomeUser, on_delete=models.CASCADE, related_name='user_history')
     price = models.PositiveIntegerField(blank=True)
     paid = models.BooleanField(default=False)
-    # total_price = models.PositiveBigIntegerField(blank=True, null=True)
-    created = models.DateTimeField(auto_now_add=True)
-    paid_change = models.DateTimeField(auto_now=True)
+    total_price = models.PositiveBigIntegerField(blank=True, null=True)
+    created = jmodels.jDateTimeField(auto_now_add=True)
+    paid_change = jmodels.jDateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.user.room_id
 
 
 def rent_history_save(sender, instance, created, *args, **kwargs):
     data = instance
     if created:
         RentHistory.objects.create(user=data.user, price=data.price, created=data.create, paid_change=data.update,
-                                   )
+                                   total_price=data.total_price)
 
 
 post_save.connect(rent_history_save, sender=RentRoom)
+
+
+@receiver(post_delete, sender=RentRoom)
+def rent_history_delete(sender, instance, *args, **kwargs):
+    RentHistory.objects.filter(user=instance.user).delete()

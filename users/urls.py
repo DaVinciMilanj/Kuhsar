@@ -9,5 +9,6 @@ urlpatterns = [
     path('admin_page' , views.AdminPage.as_view(), name='admin_page'),
     path('user_page' , views.user_page, name='user_page'),
     path('logout' , views.LogoutUser.as_view() , name='logout_user'),
-    path('register' , views.RegisterUserPage.as_view(), name='register')
+    path('register' , views.RegisterUserPage.as_view(), name='register'),
+    path('datails/<int:id>' , views.admin_details , name='admin_details')
 ]

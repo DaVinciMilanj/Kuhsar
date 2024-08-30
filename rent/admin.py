@@ -5,8 +5,8 @@ from .models import *
 # Register your models here.
 
 class AdminRent(admin.ModelAdmin):
-    fields = ['user', 'price', 'discount', 'start_date', 'end_date', 'best_date', 'golden_date']
-    list_display = ['user_room_id', 'price', 'start_date', 'end_date']
+    fields = ['user', 'price', 'discount', 'start_date', 'end_date', 'best_date', 'golden_date' , 'detail']
+    list_display = ['user_room_id', 'price', 'start_date', 'end_date' , 'total_price']
     search_fields = ['user__room_id', 'start_date']
 
     def user_room_id(self, obj):

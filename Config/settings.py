@@ -37,8 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_jalali',
     'users.apps.UsersConfig',
-    'rent.apps.RentConfig'
+    'rent.apps.RentConfig',
+
 ]
 AUTH_USER_MODEL = 'users.CustomeUser'
 

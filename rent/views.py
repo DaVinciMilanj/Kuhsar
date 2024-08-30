@@ -21,7 +21,14 @@ class RentUsersView(generic.ListView):
     def get_queryset(self):
         return RentRoom.objects.filter(user_id=self.request.user.id)
 
-class RentRoomAdmin(generic.CreateView , LoginRequiredMixin):
+
+class RentRoomAdmin(generic.CreateView, LoginRequiredMixin):
     form_class = RentRoomForm
-    template_name='rent/admin-rent.html'
+    template_name = 'rent/admin-rent.html'
     context_object_name = 'form'
+
+
+class RentRoomDetails(generic.DetailView):
+    model = RentRoom
+    template_name = 'rent/rent-details.html'
+    context_object_name = 'bill'

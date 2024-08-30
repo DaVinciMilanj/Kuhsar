@@ -16,7 +16,7 @@
                                             <div class="form-floating mb-3">
 
                                                 <select name="user" class="form-select"
-                                                        aria-label="Default select example" plac >
+                                                        aria-label="Default select example"  >
                                                     {% for user in form.fields.user.choices %}
                                                         {% if not user.0.is_staff %}
                                                             <option value="{{ user.0 }}">{{ user.1 }}</option>
