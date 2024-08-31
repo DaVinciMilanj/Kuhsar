@@ -4,6 +4,7 @@ from django.utils import timezone
 from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import RentRoomForm
+from django.urls import reverse_lazy
 
 
 # Create your views here.
@@ -26,6 +27,7 @@ class RentRoomAdmin(generic.CreateView, LoginRequiredMixin):
     form_class = RentRoomForm
     template_name = 'rent/admin-rent.html'
     context_object_name = 'form'
+    success_url = reverse_lazy('rent:admin_rent')
 
 
 class RentRoomDetails(generic.DetailView):
