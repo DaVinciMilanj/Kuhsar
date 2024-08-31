@@ -1,13 +1,30 @@
 from django.contrib import admin
-from .models import *
+from django import forms
+from .models import RentRoom, RentHistory
+from users.models import CustomeUser
 
 
-# Register your models here.
+class UserRoomIDWidget(forms.Select):
+    def __init__(self, *args, **kwargs):
+        super(UserRoomIDWidget, self).__init__(*args, **kwargs)
+        # نمایش room_id به جای نام کاربر
+        self.choices = [(user.id, user.room_id) for user in CustomeUser.objects.filter(status='owner')]
+
+
+class RentRoomForm(forms.ModelForm):
+    class Meta:
+        model = RentRoom
+        fields = ['user', 'price', 'discount', 'start_date', 'end_date', 'best_date', 'golden_date', 'detail']
+        widgets = {
+            'user': UserRoomIDWidget()
+        }
+
 
 class AdminRent(admin.ModelAdmin):
-    fields = ['user', 'price', 'discount', 'start_date', 'end_date', 'best_date', 'golden_date' , 'detail']
-    list_display = ['user_room_id', 'price', 'start_date', 'end_date' , 'total_price']
+    form = RentRoomForm
+    list_display = ['user_room_id', 'price', 'start_date', 'end_date', 'total_price']
     search_fields = ['user__room_id', 'start_date']
+    readonly_fields = ['user_room_id']
 
     def user_room_id(self, obj):
         return obj.user.room_id
@@ -16,5 +33,4 @@ class AdminRent(admin.ModelAdmin):
 
 
 admin.site.register(RentRoom, AdminRent)
-
 admin.site.register(RentHistory)
