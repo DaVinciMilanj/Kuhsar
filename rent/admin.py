@@ -4,32 +4,16 @@ from .models import RentRoom, RentHistory
 from users.models import CustomeUser
 
 
-class UserRoomIDWidget(forms.Select):
-    def __init__(self, *args, **kwargs):
-        super(UserRoomIDWidget, self).__init__(*args, **kwargs)
-        # نمایش room_id به جای نام کاربر
-        self.choices = [(user.id, user.room_id) for user in CustomeUser.objects.filter(status='owner')]
-
-
-class RentRoomForm(forms.ModelForm):
-    class Meta:
-        model = RentRoom
-        fields = ['user', 'price', 'discount', 'start_date', 'end_date', 'best_date', 'golden_date', 'detail']
-        widgets = {
-            'user': UserRoomIDWidget()
-        }
-
-
 class AdminRent(admin.ModelAdmin):
-    form = RentRoomForm
-    list_display = ['user_room_id', 'price', 'start_date', 'end_date', 'total_price']
+    fields = ['user' ,'price' ,'start_date' ,'end_date' ,'best_date' ,'detail' ,'golden_date' ,'discount']
+    list_display = ['user', 'price', 'start_date', 'end_date', 'total_price' , 'is_active']
     search_fields = ['user__room_id', 'start_date']
-    readonly_fields = ['user_room_id']
-
-    def user_room_id(self, obj):
-        return obj.user.room_id
-
-    user_room_id.short_description = 'Room ID'
+    # readonly_fields = ['user_room_id']
+    #
+    # def user_room_id(self, obj):
+    #     return obj.user.room_id
+    #
+    # user_room_id.short_description = 'Room ID'
 
 
 admin.site.register(RentRoom, AdminRent)

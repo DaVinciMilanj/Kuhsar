@@ -15,3 +15,6 @@ class CustomeUser(AbstractUser):
     room_id = models.CharField(max_length=5 , unique=True , blank=True , null=True)
     room_size = models.PositiveIntegerField(blank=True , null=True)
     status = models.CharField(choices=STATUS , blank=True , null= True , max_length=18)
+
+    def __str__(self):
+        return self.room_id
