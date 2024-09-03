@@ -17,4 +17,4 @@ class CustomeUser(AbstractUser):
     status = models.CharField(choices=STATUS , blank=True , null= True , max_length=18)
 
     def __str__(self):
-        return self.room_id
+        return str(self.room_id)

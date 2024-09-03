@@ -12,7 +12,7 @@ class CustomUserCreationForm(UserCreationForm):
 class CustomeUserChangeForm(UserChangeForm):
     class Meta:
         model = CustomeUser
-        fields = UserCreationForm.Meta.fields + ('phone', 'room_id')
+        fields = UserChangeForm.Meta.fields
 
 
 class LoginForm(forms.Form):

@@ -23,11 +23,14 @@ class RentUsersView(generic.ListView):
         return RentRoom.objects.filter(user_id=self.request.user.id)
 
 
-class RentRoomAdmin(generic.CreateView, LoginRequiredMixin):
+class RentRoomAdmin(LoginRequiredMixin, generic.CreateView):
     form_class = RentRoomForm
     template_name = 'rent/admin-rent.html'
     context_object_name = 'form'
-    success_url = reverse_lazy('rent:admin_rent')
+    success_url = reverse_lazy('users:admin_page')
+
+
+
 
 
 class RentRoomDetails(generic.DetailView):
