@@ -94,7 +94,7 @@ DATABASES = {
 
         # KIYA DATABASE
         # 'ENGINE': 'django.db.backends.mysql',
-        # 'NAME': 'kuhsar',
+        # 'NAME': 'kuhsarsql',
         # 'USER': 'root',
         # 'PASSWORD': '1234',
         # 'HOST': 'localhost',

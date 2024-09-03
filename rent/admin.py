@@ -6,7 +6,7 @@ from users.models import CustomeUser
 
 class AdminRent(admin.ModelAdmin):
     fields = ['user' ,'price' ,'start_date' ,'end_date' ,'best_date' ,'detail' ,'golden_date' ,'discount']
-    list_display = ['user', 'price', 'start_date', 'end_date', 'total_price' , 'is_active']
+    list_display = ['user', 'price', 'start_date', 'end_date', 'total_price' , ]
     search_fields = ['user__room_id', 'start_date']
     # readonly_fields = ['user_room_id']
     #
