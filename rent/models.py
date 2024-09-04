@@ -46,6 +46,12 @@ class RentRoom(models.Model):
             total = self.price * self.user.room_size
             return int(total)
 
+    def is_active(self):
+        time = timezone.now().date()
+        if time > self.end_date:
+            self.is_active = False
+            return self.is_active
+        return self.is_active
 
 
 
