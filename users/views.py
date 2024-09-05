@@ -124,9 +124,10 @@ class LogoutUser(LogoutView):
 #
 
 def admin_details(request, id):
+    user = CustomeUser.objects.get(id=id)
     bills = RentRoom.objects.filter(user_id=id)
     paginator = Paginator(bills , 10)
     page_number = request.GET.get("page")
     page_obj = paginator.get_page(page_number)
-    context = {'page_obj' : page_obj}
+    context = {'user' : user}
     return render(request, 'users/admin-details.html', context )

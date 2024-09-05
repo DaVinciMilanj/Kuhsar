@@ -54,7 +54,6 @@ class RentRoom(models.Model):
         return self.is_active
 
 
-
 class RentHistory(models.Model):
     user = models.ForeignKey(CustomeUser, on_delete=models.CASCADE, related_name='user_history')
     price = models.PositiveIntegerField(blank=True)

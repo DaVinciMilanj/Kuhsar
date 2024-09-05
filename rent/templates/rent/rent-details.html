@@ -1,5 +1,61 @@
 {% extends '_base.html' %}
 {% load static %}
 {% block body %}
-	{{ bill.start_date }}
+    <div class="p-5"
+         style="background-image: url('../static/img/Login_bg2.jpg'); background-size: cover; height: 90.3vh">
+        <div class="container">
+            <div class="card bg-dark text-light ">
+                <div class="card-body p-5">
+                    <div class="row gy-4 gx-0">
+                        <div class=" col-md-6 text-center">
+                            <div class=" mx-2 py-2 border rounded">
+                                تاریخ شروع قبض : {{ bill.start_date }}
+
+                            </div>
+                        </div>
+                        <div class=" col-md-6 text-center">
+                            <div class=" mx-2 py-2 border rounded">
+                                تاریخ پایان قبض : {{ bill.end_date }}
+                            </div>
+                        </div>
+                        <div class=" col-md-6 text-center">
+                            <div class=" mx-2 py-2 border rounded">
+                                قیمت : {{ bill.price }} ریال
+                            </div>
+                        </div>
+                        <div class=" col-md-6 text-center">
+                            <div class=" mx-2 py-2 border rounded">
+                                تخفیف : %{{ bill.discount }}
+                            </div>
+                        </div>
+                        <div class="col-md-3"></div>
+                        <div class=" col-md-6 text-center">
+                            <div class=" mx-2 py-2 border rounded">
+                                پرداختی : {{ bill.total_price }} ریال
+                            </div>
+                        </div>
+                        <div class="col-md-3"></div>
+                        <div class="col-md-3"></div>
+                        <div class=" col-md-6 text-center">
+                            <div class=" mx-2 p-2 border rounded">
+                                {% if bill.paid == False %}
+
+                                    <span class="badge py-2  px-3 text-bg-danger">پرداخت نشده</span>
+                                    <br>
+                                    <br>
+
+                                    <button class="btn btn-sm btn-primary ">پرداخت</button>
+
+                                {% elif bill.paid == True %}
+                                    <span class="badge py-2 px-3 text-bg-success">پرداخت شده</span>
+
+                                {% endif %}
+                            </div>
+                            <div class="col-md-3"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
