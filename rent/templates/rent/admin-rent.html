@@ -1,7 +1,6 @@
 {% extends "_base-admin.html" %}
-
 {% load jformat %}
-
+{#>>>>>>> 136e8b6722b371fb46815781fb317f2153d05c2f#}
 {% block body %}
     <div id="layoutAuthentication">
         <div id="layoutAuthentication_content">
@@ -18,7 +17,8 @@
                                         {% csrf_token %}
                                         <div class="row mb-3">
                                             <div class="form-floating mb-3">
-                                                <select name="user" class="form-select" aria-label="Default select example">
+                                                <select name="user" class="form-select"
+                                                        aria-label="Default select example">
                                                     {% for user in form.fields.user.choices %}
                                                         {% if not user.0.is_staff %}
                                                             <option value="{{ user.0 }}">{{ user.1 }}</option>
@@ -29,37 +29,48 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-floating mb-3 mb-md-0">
-                                                    <input name="price" class="form-control" id="inputPrice" type="number" placeholder=""/>
+                                                    <input required name="price" class="form-control" id="inputPrice"
+                                                           type="number" placeholder=""/>
                                                     <label for="inputPrice">قیمت</label>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-floating">
-                                                    <input name="discount" class="form-control" id="inputDiscount" type="number" placeholder=" "/>
+                                                    <input required name="discount" class="form-control" id="inputDiscount"
+                                                           type="number" placeholder=" "/>
                                                     <label for="inputDiscount">تخفیف %</label>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="form-floating mb-3">
-                                            <input name="best_date" class="form-control" id="InputBestTime" type="text" data-jdp placeholder=""/>
+                                            <input required name="best_date" class="form-control"
+                                                   id="InputBestTime" type="text" data-jdp
+                                                   placeholder=""/>
                                             <label for="inputBestDate">بهترین تایم</label>
                                         </div>
                                         <div class="row mb-3">
                                             <div class="col-md-6">
                                                 <div class="form-floating mb-3 mb-md-0">
-                                                    <input name="start_date" class="form-control" id="inputStartDate" type="text" data-jdp placeholder=""/>
+                                                    <input required name="start_date" class="form-control" id="inputStartDate"
+                                                           type="text" data-jdp
+                                                           placeholder=""/>
                                                     <label for="inputStartDate">تاریخ شروع</label>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-floating mb-3 mb-md-0">
-                                                    <input name="end_date" class="form-control" id="inputEndDate" type="text" data-jdp />
+                                                    <input required name="end_date" class="form-control" id="inputEndDate"
+                                                           type="text" data-jdp
+                                                           value="{{ form.instance.end_date|jformat:'%Y-%m-%d' }}"/>
                                                     <label for="inputEndDate">تاریخ پایان</label>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="form-floating mb-3">
-                                            <input name="golden_date" class="form-control" id="inputGoldenDate" type="text" data-jdp placeholder=""/>
+                                            <input name="golden_date" class="form-control" id="inputGoldenDate"
+                                                   type="text" data-jdp
+                                                   placeholder=""/>
+
                                             <label for="inputGoldenDate">دوره طلایی</label>
                                         </div>
                                         <div class="mt-4 mb-0">
@@ -78,5 +89,9 @@
             </main>
         </div>
     </div>
+
+<script>
+    jalaliDatepicker.startWatch();
+</script>
 {% endblock %}
 
