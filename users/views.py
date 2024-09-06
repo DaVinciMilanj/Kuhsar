@@ -10,6 +10,7 @@ from .models import CustomeUser
 from django.contrib.auth.mixins import LoginRequiredMixin
 from rent.models import RentRoom
 from django.core.paginator import Paginator
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -63,15 +64,16 @@ class HomePageView(generic.FormView):
 #     users = CustomeUser.objects.filter(status='owner')
 #     return render(request, 'users/admin.html', {'users': users})
 
-class AdminPage(generic.ListView):
+class AdminPage( LoginRequiredMixin,generic.ListView):
     model = CustomeUser
     template_name = 'users/admin.html'
     context_object_name = 'users'
 
+
     def get_queryset(self):
         return CustomeUser.objects.filter(status='owner')
 
-
+@login_required(login_url='users:home')
 def user_page(request):
     return render(request, 'users/users.html')
 
@@ -93,7 +95,7 @@ def user_page(request):
 #     return render(request, 'users/register.html', {'form': form})
 
 
-class RegisterUserPage(generic.FormView):
+class RegisterUserPage( LoginRequiredMixin,generic.FormView):
     form_class = RegisterForm
     template_name = 'users/register.html'
 
@@ -123,6 +125,7 @@ class LogoutUser(LogoutView):
 #     context_object_name = 'bills'
 #
 
+@login_required(login_url='users:home')
 def admin_details(request, id):
     bills = RentRoom.objects.filter(user_id=id)
     paginator = Paginator(bills , 10)
