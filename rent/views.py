@@ -14,7 +14,7 @@ from django.urls import reverse_lazy
 #     return render(request, 'rent/userRent.html', context)
 #
 
-class RentUsersView(generic.ListView):
+class RentUsersView(LoginRequiredMixin, generic.ListView):
     model = RentRoom
     template_name = 'rent/userRent.html'
     context_object_name = 'bill'
@@ -49,9 +49,7 @@ class RentRoomAdmin(LoginRequiredMixin, generic.CreateView):
 #     return render(request , 'rent/admin-rent.html')
 
 
-
-class RentRoomDetails(generic.DetailView):
+class RentRoomDetails(LoginRequiredMixin, generic.DetailView):
     model = RentRoom
     template_name = 'rent/rent-details.html'
     context_object_name = 'bill'
-
