@@ -132,5 +132,5 @@ def admin_details(request, id):
     paginator = Paginator(bills , 10)
     page_number = request.GET.get("page")
     page_obj = paginator.get_page(page_number)
-    context = {'user' : user}
+    context = {'user_derail' : user}
     return render(request, 'users/admin-details.html', context )
