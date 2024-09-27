@@ -10,48 +10,48 @@
                     <div class="col-md-3"></div>
                     <div class=" col-md-6 text-center">
                         <div class=" mx-2 py-2 border rounded">
-                            نام کاربری : {{ user.username }}
+                            نام کاربری : {{ user_derail.username }}
                         </div>
                     </div>
                     <div class="col-md-3"></div>
                     <div class=" col-md-6 text-center">
                         <div class=" mx-2 py-2 border rounded">
-                            نام : {{ user.first_name }}
+                            نام : {{ user_derail.first_name }}
                         </div>
                     </div>
                     <div class=" col-md-6 text-center">
                         <div class=" mx-2 py-2 border rounded">
-                            نام خانوادگی : {{ user.last_name }}
+                            نام خانوادگی : {{ user_derail.last_name }}
                         </div>
                     </div>
                     <div class="col-md-3"></div>
                     <div class=" col-md-6 text-center">
                         <div class=" mx-2 py-2 border rounded">
-                            تلفن : {{ user.phone }}
+                            تلفن : {{ user_derail.phone }}
 
                         </div>
                     </div>
                     <div class="col-md-3"></div>
                     <div class=" col-md-6 text-center">
                         <div class=" mx-2 py-2 border rounded">
-                             شناسه ملک : {{ user.room_id }}
+                             شناسه ملک : {{ user_derail.room_id }}
                         </div>
                     </div>
                     <div class=" col-md-6 text-center">
                         <div class=" mx-2 py-2 border rounded">
-                             متراژ ملک : {{ user.room_size }}
+                             متراژ ملک : {{ user_derail.room_size }}
                         </div>
                     </div>
                     <div class="col-md-3"></div>
                     <div class=" col-md-6 text-center">
                         <div class=" mx-2 p-2 border rounded">
-                            {% if user.status == None %}
+                            {% if user_derail.status == None %}
                             <span class="badge py-2 px-3 text-bg-warning">سوپر ادمین</span>
 
-                            {% elif user.status == "admin" %}
+                            {% elif user_derail.status == "admin" %}
                             <span class="badge py-2 px-3 text-bg-primary">ادمین</span>
 
-                            {% elif user.status == "owner" %}
+                            {% elif user_derail.status == "owner" %}
                             <span class="badge py-2 px-3 text-bg-success">مالک</span>
 
                             {% endif %}

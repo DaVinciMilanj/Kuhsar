@@ -7,3 +7,10 @@ window.addEventListener('DOMContentLoaded', event => {
         new simpleDatatables.DataTable(datatablesSimple);
     }
 });
+
+
+
+    document.addEventListener("DOMContentLoaded", function(){
+    jalaliDatepicker.startWatch();
+});
+
