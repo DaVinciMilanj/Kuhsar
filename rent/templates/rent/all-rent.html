@@ -13,7 +13,7 @@
                 <th>تخفیف</th>
                 <th>قیمت کل</th>
                 <th>وضعیت</th>
-                <th></th>
+                <th>جزئیات</th>
             </tr>
             </thead>
 
@@ -36,7 +36,7 @@
                             <span class="badge text-bg-success">پرداخت شده</span>
                         </td>
                     {% endif %}
-                    <td><a href="{% url 'rent:rent_details' b.pk %}">جزیات</a></td>
+                    <td><a class="btn btn-outline-light btn-sm" href="{% url 'rent:admin_rent_details' b.pk %}">مشاهده</a></td>
 
                 </tr>
             {% endfor %}

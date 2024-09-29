@@ -12,6 +12,7 @@ from rent.models import RentRoom
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 
+
 # Create your views here.
 
 # def home(request):
@@ -64,14 +65,14 @@ class HomePageView(generic.FormView):
 #     users = CustomeUser.objects.filter(status='owner')
 #     return render(request, 'users/admin.html', {'users': users})
 
-class AdminPage( LoginRequiredMixin,generic.ListView):
+class AdminPage(LoginRequiredMixin, generic.ListView):
     model = CustomeUser
     template_name = 'users/admin.html'
     context_object_name = 'users'
 
-
     def get_queryset(self):
         return CustomeUser.objects.filter(status='owner')
+
 
 @login_required(login_url='users:home')
 def user_page(request):
@@ -95,7 +96,7 @@ def user_page(request):
 #     return render(request, 'users/register.html', {'form': form})
 
 
-class RegisterUserPage( LoginRequiredMixin,generic.FormView):
+class RegisterUserPage(LoginRequiredMixin, generic.FormView):
     form_class = RegisterForm
     template_name = 'users/register.html'
 
@@ -129,8 +130,8 @@ class LogoutUser(LogoutView):
 def admin_details(request, id):
     user = CustomeUser.objects.get(id=id)
     bills = RentRoom.objects.filter(user_id=id)
-    paginator = Paginator(bills , 10)
+    paginator = Paginator(bills, 10)
     page_number = request.GET.get("page")
     page_obj = paginator.get_page(page_number)
-    context = {'user_derail' : user}
-    return render(request, 'users/admin-details.html', context )
+    context = {'user_derail': user}
+    return render(request, 'users/admin-details.html', context)

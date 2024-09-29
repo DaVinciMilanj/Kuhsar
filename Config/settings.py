@@ -84,21 +84,21 @@ DATABASES = {
     #     'NAME': BASE_DIR / 'db.sqlite3',
     # }
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'kuharadin',
-        'USER': 'root',
-        'PASSWORD': '123456',
-        'HOST': 'localhost',
-        'PORT': '3306',
+        # 'ENGINE': 'django.db.backends.mysql',
+        # 'NAME': 'kuharadin',
+        # 'USER': 'root',
+        # 'PASSWORD': '123456',
+        # 'HOST': 'localhost',
+        # 'PORT': '3306',
 
 
         # KIYA DATABASE
-        # 'ENGINE': 'django.db.backends.mysql',
-        # 'NAME': 'kuhsarsql',
-        # 'USER': 'root',
-        # 'PASSWORD': '1234',
-        # 'HOST': 'localhost',
-        # 'PORT': '33067',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'kuhsarsql',
+        'USER': 'root',
+        'PASSWORD': '1234',
+        'HOST': 'localhost',
+        'PORT': '33067',
     }
 }
 
@@ -137,8 +137,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = 'static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [BASE_DIR / "static"]
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 

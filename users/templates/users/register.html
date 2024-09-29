@@ -12,15 +12,17 @@
                             <div class="card-body">
                                 <form method="post">
                                     {% csrf_token %}
-                                    <div class="row mb-3">
+
                                         <div class="form-floating mb-3">
-                                            <input name="username" class="form-control" id="inputEmail" type="text"
+                                            <input name="username" class="form-control " id="inputEmail" type="text"
                                                    placeholder=""/>
-                                            <label for="inputEmail">نام کاربری</label>
+                                            <label for="inputEmail"> نام کاربری </label>
                                         </div>
+                                    <div class="row mb-3">
                                         <div class="col-md-6">
                                             <div class="form-floating mb-3 mb-md-0">
-                                                <input name="f_name" class="form-control" id="inputFirstName" type="text"
+                                                <input name="f_name" class="form-control" id="inputFirstName"
+                                                       type="text"
                                                        placeholder=""/>
                                                 <label for="inputFirstName">نام</label>
                                             </div>
@@ -41,14 +43,16 @@
                                     <div class="row mb-3">
                                         <div class="col-md-6">
                                             <div class="form-floating mb-3 mb-md-0">
-                                                <input name="room_id" class="form-control" id="inputPassword" type="text"
+                                                <input name="room_id" class="form-control" id="inputPassword"
+                                                       type="text"
                                                        placeholder=""/>
                                                 <label for="inputPassword">شناسه ملک</label>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-floating mb-3 mb-md-0">
-                                                <input name="room_size" class="form-control" id="inputPasswordConfirm" type="text"
+                                                <input name="room_size" class="form-control" id="inputPasswordConfirm"
+                                                       type="text"
                                                        placeholder=""/>
                                                 <label for="inputPasswordConfirm">متراژ ملک</label>
                                             </div>
@@ -60,8 +64,11 @@
                                         <label for="inputEmail">رمز عبور</label>
                                     </div>
                                     <div class="mt-4 mb-0">
-                                        <div class="d-grid"><button type="submit" class="btn btn-primary btn-block pt-0 btn-lg">
-                                            ساخت کاربر</button></div>
+                                        <div class="d-grid">
+                                            <button type="submit" class="btn btn-primary btn-block pt-0 btn-lg">
+                                                ساخت کاربر
+                                            </button>
+                                        </div>
                                     </div>
                                 </form>
                             </div>

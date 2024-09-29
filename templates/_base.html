@@ -9,20 +9,11 @@
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet"/>
     <link href="{% static 'assets/css/styles.css'%}" rel="stylesheet"/>
     <style>
-        {
-        %
-        block
-        style
-        %
-        }
-        {
-        %
-        endblock
-        %
-        }
+        {% block style %}
+        {% endblock %}
         body {
             direction: rtl;
-            background-image: url("static/img/Login_bg2.jpg");
+            background-image: url("{% static 'img/Login_bg2.jpg' %}");
             background-size: cover;
 
         }
