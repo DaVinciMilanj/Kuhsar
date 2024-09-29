@@ -1,8 +1,7 @@
-{% extends '_base.html' %}
+{% extends '_base-admin.html' %}
 {% load static %}
 {% block body %}
-    <div class="p-5"
-    >
+    <div class="p-5">
         <div class="container">
             <div class="card bg-dark text-light ">
                 <div class="card-body p-5">
@@ -41,11 +40,8 @@
                                 {% if bill.paid == False %}
 
                                     <span class="badge py-2  px-3 text-bg-danger">پرداخت نشده</span>
-                                    <br>
-                                    <br>
-
-                                    <button class="btn btn-sm btn-primary ">پرداخت</button>
-
+                                  
+ 
                                 {% elif bill.paid == True %}
                                     <span class="badge py-2 px-3 text-bg-success">پرداخت شده</span>
 

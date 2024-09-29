@@ -11,7 +11,7 @@
             <th>شناسه ملک</th>
             <th>متراژ ملک</th>
             <th>وضعیت</th>
-            <th>جزیات</th>
+            <th>جزئیات</th>
             <th>قبوض کاربر</th>
         </tr>
         </thead>
@@ -40,8 +40,8 @@
                 <span class="badge text-bg-success">مالک</span>
             </td>
             {% endif %}
-            <td><a href=" {% url 'users:admin_details' user.id %} ">مشاهده </a></td>
-            <td><a href="{% url 'rent:all_rent' user.id %}"> مشاهده</a>  </td>
+            <td><a class="btn btn-outline-light btn-sm" href=" {% url 'users:admin_details' user.id %} ">مشاهده </a></td>
+            <td><a class="btn btn-outline-light btn-sm" href="{% url 'rent:all_rent' user.id %}"> مشاهده</a></td>
         </tr>
         {% endfor %}
         </tbody>

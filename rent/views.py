@@ -69,6 +69,19 @@ class RentRoomAdmin(LoginRequiredMixin, UserPassesTestMixin, generic.CreateView)
 #         form =RentRoomForm()
 #     return render(request , 'rent/admin-rent.html')
 
+class AdminRentRoomDetails(UserPassesTestMixin, LoginRequiredMixin, generic.DetailView):
+    model = RentRoom
+    template_name = 'rent/admin-rent-details.html'
+    context_object_name = 'bill'
+
+    def test_func(self):
+        user = self.request.user
+
+        return user.is_authenticated and (user.status == 'admin' or user.is_superuser or user.id == self.kwargs['pk'])
+
+    def handle_no_permission(self):
+        return HttpResponseForbidden("شما اجازه دسترسی به این صفحه را ندارید.")
+
 
 class RentRoomDetails(LoginRequiredMixin, generic.DetailView):
     model = RentRoom

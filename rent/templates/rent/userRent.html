@@ -35,7 +35,7 @@
                             <span class="badge text-bg-success">پرداخت شده</span>
                         </td>
                     {% endif %}
-                    <td><a href="{% url 'rent:rent_details' b.pk %}">جزیات</a></td>
+                    <td><button class="btn btn-outline-light btn-sm" href="{% url 'rent:rent_details' b.pk %}">جزیات</button></td>
 
                 </tr>
             {% endfor %}
